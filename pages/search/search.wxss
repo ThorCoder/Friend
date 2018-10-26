@@ -4,26 +4,28 @@
   justify-content:center;
   align-items:center;
 }
-.minfo .avatar{
-  width:80rpx;
-  height: 80rpx;
-  border-radius:100%;
-  overflow: hidden;
-  margin-right: 20rpx;
-}
 .minfo .text{
   flex-grow:1;
   font-size: 12pt;
   color:#ccc;
-  text-align: center;
   background: #f0f0f0;
   border-radius: 10rpx;
-  line-height: 50rpx;
-  height: 50rpx;
-  display: block;
+  line-height: 80rpx;
+  height: 80rpx;
+  padding:0 40rpx;
 }
 .minfo icon{
-  margin:2rpx 10rpx 0 0;
+  margin-right:10rpx;
+}
+.minfo .clear{
+  position: absolute;
+  right:40rpx;
+  z-index:99;
+  width:80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content:center;
+  align-items:center;
 }
 .frienditem{
   display: flex;
@@ -54,23 +56,8 @@
 .frienditem .subname.sex2{
   background: #d81e06;
 }
-.frienditem .info{
+.frienditem .name{
   margin-left:30rpx;
-  flex-grow:1;
-}
-.frienditem .info text{
-  display: block;
-}
-.frienditem .info .name{
   font-size: 14pt;
-}
-.frienditem .info .event,.frienditem .time{
-  color:#cccccc;
-  font-size: 11pt;
-}
-.friendtotal{
-  text-align: center;
-  color: #cccccc;
-  font-size: 12pt;
-  margin-top: 10rpx;
+  flex-grow:1;
 }

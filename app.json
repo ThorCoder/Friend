@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/friend/friend",
-    "pages/index/index"
-    
+    "pages/index/index",
+    "pages/search/search",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "朋友库",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":true
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#515151",

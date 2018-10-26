@@ -1,14 +1,14 @@
 <view class="box">
   <view class="minfo">
     <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
-    <view class="text"><icon type="search" size="18"/><text>搜索</text></view>
+    <navigator url="/pages/search/search" class="text"><icon type="search" size="16"/><text>搜索</text></navigator>
   </view>
   <view class="friendlist">
-    <view wx:for="{{friendlist}}" wx:key="id" class="frienditem" hover-class="hover">
+    <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{friendlist}}" wx:key="id" class="frienditem" hover-class="hover">
       <text class="subname sex{{item.sex}}">{{item.subname}}</text>
       <view class="info"><text class="name">{{item.name}}</text><text class="event">{{item.event}}</text></view>
       <text class="time">{{item.time}}</text>
-    </view>
+    </navigator>
   </view>
   <view class="friendtotal">{{friendlist.length}}位朋友</view>
 </view>
