@@ -1,13 +1,15 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
+  "pages": [
+    "pages/friend/friend",
+    "pages/index/index"
+    
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "朋友库",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
     "color": "#515151",
@@ -16,22 +18,22 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/friend/friend",
         "text": "朋友",
         "iconPath": "static/img/friend.png",
         "selectedIconPath": "static/img/friend_1.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "消息",
-        "iconPath": "static/img/mess.png",
-        "selectedIconPath": "static/img/mess_1.png"
+        "text": "添加",
+        "iconPath": "static/img/add.png",
+        "selectedIconPath": "static/img/add_1.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "我的",
-        "iconPath": "static/img/my.png",
-        "selectedIconPath": "static/img/my_1.png"
+        "text": "消息",
+        "iconPath": "static/img/mess.png",
+        "selectedIconPath": "static/img/mess_1.png"
       }
     ]
   }

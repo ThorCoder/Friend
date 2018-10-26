@@ -1,0 +1,70 @@
+.minfo{
+  padding: 30rpx;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.minfo .avatar{
+  width:70rpx;height: 70rpx;border-radius:100%;overflow: hidden;
+}
+.minfo .text{
+  flex-grow:1;
+  font-size: 12pt;
+  color:#ccc;
+  text-align: center;
+  background: #f0f0f0;
+  border-radius: 10rpx;
+  line-height: 30rpx;
+}
+.minfo icon{
+  margin:2rpx 10rpx 0 0;
+}
+.frienditem{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  border-bottom: 1rpx solid #cccccc;
+  padding:30rpx;
+}
+.frienditem.hover{
+  background: #f1f1f1;
+}
+.frienditem .subname{
+  font-size: 13pt;
+  display: inline-block;
+  color: #ffffff;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 100%;
+}
+.frienditem .subname.sex0{
+  background: #515151;
+}
+.frienditem .subname.sex1{
+  background: #1296db;
+}
+.frienditem .subname.sex2{
+  background: #d81e06;
+}
+.frienditem .info{
+  margin-left:30rpx;
+  flex-grow:1;
+}
+.frienditem .info text{
+  display: block;
+}
+.frienditem .info .name{
+  font-size: 14pt;
+}
+.frienditem .info .event,.frienditem .time{
+  color:#cccccc;
+  font-size: 11pt;
+}
+.friendtotal{
+  text-align: center;
+  color: #cccccc;
+  font-size: 12pt;
+  margin-top: 10rpx;
+}
