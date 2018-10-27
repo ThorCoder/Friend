@@ -1,1 +1,84 @@
-/* pages/detail/detail.wxss */
+.minfo{
+  padding: 30rpx;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+}
+.minfo .subname{
+  font-size: 13pt;
+  color: #ffffff;
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  border-radius: 100%;
+}
+.minfo .subname.sex0{
+  background: #515151;
+}
+.minfo .subname.sex1{
+  background: #1296db;
+}
+.minfo .subname.sex2{
+  background: #d81e06;
+}
+.minfo .subintro{
+  color:#ccc;
+  font-size: 11pt;
+  display: flex;
+  justify-content:center;
+}
+.minfo .subintro text{
+  flex-grow: 1;
+}
+.minfo .subintro image{
+  width:46rpx;
+  height: 46rpx;
+}
+
+
+
+.item{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  border-bottom: 1rpx solid #cccccc;
+  padding:30rpx;
+}
+.item.hover{
+  background: #f1f1f1;
+}
+.item .type{
+  background: #515151;
+  font-size: 12pt;
+  display: inline-block;
+  color: #ffffff;
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 100%;
+}
+.item .info{
+  margin-left:30rpx;
+  flex-grow:1;
+}
+.item .info .name{
+  font-size: 14pt;
+}
+.item image{
+  width:40rpx;
+  height:40rpx;
+}
+.item .info .event{
+  color:#cccccc;
+  font-size: 11pt;
+  display: block;
+}
+.total{
+  text-align: center;
+  color: #cccccc;
+  font-size: 12pt;
+  margin-top: 10rpx;
+}

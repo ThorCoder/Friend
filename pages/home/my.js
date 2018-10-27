@@ -1,16 +1,11 @@
-// pages/detail/detail.js
+// pages/my/my.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    "minfo": { "name": "网小类", "subname": "小雷", "sex": "1","birthday":"1993.09.24"},
-    "thinglist":[
-      {"type":"结婚","time":"1993.09.24","remind":true},
-      { "type": "生子", "time": "1993.09.24", "remind": true },
-      { "type": "买房", "time": "1993.09.24", "remind": false,"event":"在平谷买房" },
-    ]
+
   },
 
   /**

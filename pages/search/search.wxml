@@ -1,7 +1,7 @@
 <view class="box">
   <view class="minfo">
     <icon type="search" size="20"/>
-    <input type="text" class="text" confirm-type="search" placeholder="搜索" placeholder-style='text-align:center;' focus="true" auto-focus="true" maxlength="10" bindinput="search" value="{{searchinput}}" />
+    <input type="text" class="text" confirm-type="search" placeholder="搜索" placeholder-style='text-align:center;' focus="{{focus}}" auto-focus="{{focus}}" maxlength="10" bindinput="search" value="{{searchinput}}" />
     <view class="clear" bindtap='reset' hidden="{{ishidden}}" ><icon type="clear" size="20" color="#d81e06" hidden="{{ishidden}}"/></view>
   </view>
   <view class="friendlist">

@@ -7,7 +7,8 @@ Page({
   data: {
     "friendlist": [],
     "ishidden":true,
-    "searchinput":""
+    "searchinput":"",
+    "focus":true
   },
   search: function (value, cursor, keyCode){
     var friendlist = [];
@@ -26,6 +27,11 @@ Page({
       "searchinput": "",
       "friendlist":[],
       "ishidden":true
+    })
+  },
+  onShow:function(){
+    this.setData({
+      "focus": true
     })
   }
 })

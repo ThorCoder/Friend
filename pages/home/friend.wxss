@@ -5,11 +5,21 @@
   align-items:center;
 }
 .minfo .avatar{
-  width:80rpx;
-  height: 80rpx;
-  border-radius:100%;
+  width:64rpx;
+  height: 64rpx;
   overflow: hidden;
   margin-right: 20rpx;
+  border-radius: 100%;
+}
+.minfo .add{
+  width:56rpx;
+  height: 56rpx;
+  overflow: hidden;
+  margin-left: 20rpx;
+}
+.minfo .add image{
+  width:56rpx;
+  height: 56rpx;
 }
 .minfo .text{
   flex-grow:1;

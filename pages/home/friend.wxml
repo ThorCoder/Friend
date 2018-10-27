@@ -1,7 +1,8 @@
 <view class="box">
   <view class="minfo">
-    <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
+    <navigator class="avatar" url="/pages/detail/detail"><open-data type="userAvatarUrl"></open-data></navigator>
     <navigator url="/pages/search/search" class="text"><icon type="search" size="16"/><text>搜索</text></navigator>
+    <navigator class="add" url="/pages/friend/add"><image src="/static/img/add.png"></image></navigator>
   </view>
   <view class="friendlist">
     <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{friendlist}}" wx:key="id" class="frienditem" hover-class="hover">

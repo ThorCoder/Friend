@@ -1,0 +1,40 @@
+<view class="box">
+  <form bindsubmit="bindsubmit">
+  <view class="item">
+    <input type="text" class="text" confirm-type="search" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" />
+  </view>
+  <view class="item">
+    <input type="text" class="text" confirm-type="search" placeholder="Ta是我的" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" />
+  </view>
+  <view class='item'>
+    <radio-group class="radio-group">
+    <label class="radio">
+      <radio value="0" checked="true"/>不填
+    </label>
+    <label class="radio">
+      <radio value="1"/>男
+    </label>
+    <label class="radio">
+      <radio value="2"/>女
+    </label>
+  </radio-group>
+  </view>
+  <view class='item'>
+     <picker mode="date" value="{{birthday}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange">
+    <view class="picker">
+      生日: {{birthday}}
+    </view>
+  </picker>
+  </view>
+  <view class='item'>
+     <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+    <view class="picker">
+      地区: {{region}}
+    </view>
+  </picker>
+  </view>
+  <view class="btn-area">
+    <button formType="submit">提交</button>
+  </view>
+  </form>
+</view>

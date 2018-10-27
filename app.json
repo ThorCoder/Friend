@@ -1,15 +1,16 @@
 {
   "pages": [
-    "pages/friend/friend",
-    "pages/index/index",
+    "pages/home/friend",
+    "pages/home/my",
+    "pages/friend/add",
     "pages/search/search",
     "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "朋友库",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#515151",
@@ -18,22 +19,15 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/friend/friend",
-        "text": "朋友",
+        "pagePath": "pages/home/friend",
+        "text": "主页",
         "iconPath": "static/img/friend.png",
         "selectedIconPath": "static/img/friend_1.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "添加",
-        "iconPath": "static/img/add.png",
-        "selectedIconPath": "static/img/add_1.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "消息",
-        "iconPath": "static/img/mess.png",
-        "selectedIconPath": "static/img/mess_1.png"
+      },{
+        "pagePath": "pages/home/my",
+        "text": "我的",
+        "iconPath": "static/img/my.png",
+        "selectedIconPath": "static/img/my_1.png"
       }
     ]
   }
