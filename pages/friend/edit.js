@@ -1,29 +1,29 @@
 Page({
   data: {
-      "birthday":"",
-      "region":""
+    "birthday": "",
+    "region": ""
   },
   bindTimeChange: function (e) {
     this.setData({
       "birthday": e.detail.value
     })
-  },bindRegionChange: function (e) {
+  }, bindRegionChange: function (e) {
     console.log(e)
     this.setData({
       "region": e.detail.value
     })
   },
-  bindsubmit:function(e){
+  bindsubmit: function (e) {
+    
     wx.showModal({
-      content: '添加成功！',
-      showCancel:false,
+      content: '修改成功！',
+      showCancel: false,
       success(res) {
         //confirm cancel
-        wx.redirectTo({
-          url: '/pages/detail/detail'
+        wx.navigateBack({
+          delta: 1
         })
       }
     })
-    
   }
 })

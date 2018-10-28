@@ -4,7 +4,10 @@
     "pages/home/my",
     "pages/friend/add",
     "pages/search/search",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/friend/edit",
+    "pages/thing/add",
+    "pages/thing/edit"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -23,7 +26,8 @@
         "text": "主页",
         "iconPath": "static/img/friend.png",
         "selectedIconPath": "static/img/friend_1.png"
-      },{
+      },
+      {
         "pagePath": "pages/home/my",
         "text": "我的",
         "iconPath": "static/img/my.png",

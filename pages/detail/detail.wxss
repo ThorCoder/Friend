@@ -77,8 +77,18 @@
   display: block;
 }
 .total{
-  text-align: center;
-  color: #cccccc;
-  font-size: 12pt;
   margin-top: 10rpx;
+  display: flex;
+  align-items:center;
+  padding: 0 20rpx;
+}
+.total text{
+  font-size: 12pt;
+  color: #cccccc;
+}
+.total navigator{
+  flex-grow:1;
+  font-size: 14pt;
+  text-align: right;
+  color:#1296db;
 }

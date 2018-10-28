@@ -1,0 +1,13 @@
+.item{
+  line-height: 80rpx;
+  height: 80rpx;
+  padding:0 40rpx;
+  margin: 20rpx 0;
+}
+.item input{
+  font-size: 12pt;
+  color:#ccc;
+  background: #f0f0f0;
+  border-radius: 10rpx;
+  height: 100%;
+}

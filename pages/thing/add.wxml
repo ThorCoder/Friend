@@ -1,0 +1,34 @@
+<view class="box">
+  <form bindsubmit="bindsubmit">
+  <view class="item">
+    <input type="text" class="text" confirm-type="search" placeholder="类别" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="2" />
+  </view>
+  
+  <view class='item'>
+     <picker mode="date" value="{{birthday}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange">
+    <view class="picker">
+      时间: {{birthday}}
+    </view>
+  </picker>
+  </view>
+  <view class="item">
+    <input type="text" class="text" confirm-type="search" placeholder="备注" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" />
+  </view>
+  <view class="item">
+    提醒：<switch checked="{{switch}}" bindchange="switchChange"/>
+  </view>
+  <view class="item" hidden='{{!switch}}'>
+    <picker bindchange="bindPickerChange"  value="{{zhouqiindex}}" range="{{zhouqi}}">
+      <view class="picker">
+        周期：{{zhouqi[zhouqiindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item" hidden='{{!switch}}'>
+    下次提醒：{{nexttixing}}
+  </view>
+  <view class="btn-area">
+    <button formType="submit">提交</button>
+  </view>
+  </form>
+</view>

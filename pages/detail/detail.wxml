@@ -1,7 +1,7 @@
 <view class="box">
-  <view class="minfo">
+  <navigator class="minfo" url="/pages/friend/edit">
     <text class="subname sex{{minfo.sex}}">{{minfo.subname}}</text>
-    <view><text>老板</text> <text class="name">{{minfo.name}}</text></view>
+    <view><text>老板</text><text class="name">{{minfo.name}}</text></view>
     <view class="subintro">
       <block wx:if="{{minfo.birthday!=''}}">
       <image src='/static/img/birthday_1.png' /><text>1993.09.24</text>
@@ -11,10 +11,13 @@
       </block>
       <text>河北 邯郸</text>
     </view>
+  </navigator>
+  <view class="total">
+    <text>{{thinglist.length}}件事儿</text>
+    <navigator url="/pages/thing/add?uid=1">添加事项</navigator>
   </view>
-  <view class="total">{{thinglist.length}}件事儿</view>
   <view class="thinglist">
-    <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{thinglist}}" wx:key="id" class="item" hover-class="hover">
+    <navigator url="/pages/thing/edit?id={{item.id}}" wx:for="{{thinglist}}" wx:key="id" class="item" hover-class="hover">
       <text class="type">{{item.type}}</text>
       <view class="info"><text class="name">{{item.time}}</text><text class="event">{{item.event}}</text></view>
       <image wx:if="{{item.remind}}" src="/static/img/remind_1.png"/>
