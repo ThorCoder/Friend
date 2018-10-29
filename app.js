@@ -1,50 +1,61 @@
 App({
-  onLaunch: function () {
-    this.login();
+  userInfo: { myautoid: '', myssidkey:''},
+  CONFIG:{
+    'domain':"https://vlehe.com/"
   },
-  login:function(){
-    // wx.showLoading({
-    //   title: '加载中...',
-    //   mask: true
-    // });
+  onLaunch: function () {
+    this.userInfo.myautoid = wx.getStorageSync('myautoid')
+    this.userInfo.myssidkey = wx.getStorageSync('myssidkey')
+    if(!this.userInfo.myssidkey || !this.userInfo.myautoid){
+      this.login(); return;
+    }
     wx.checkSession({
-      success() {
-        //session_key 未过期，并且在本生命周期一直有效
-      },
-      fail() {
-        wx.login({
-          success: res => {
-            // 发送 res.code 到后台换取 openId, sessionKey, unionId
-            console.log(res)
-          }
-        })
+      fail :()=> {
+        this.login();
       }
     });
   },
-  request: function (url, data, method ,header,success){
+  login:function(){
+    var that = this;
+    wx.showLoading({title: '加载中...',mask: true});
+    wx.login({
+      success: res => {
+        this.request('haha', { 'code': res.code},function(data){
+          that.userInfo.myssidkey = data.myssidkey;
+          that.userInfo.myautoid = data.myautoid;
+          wx.setStorageSync("myssidkey", data.myssidkey)
+          wx.setStorageSync("myautoid", data.myautoid)
+        });
+      }
+    })
+  },
+  request: function (url, data, success, method, header){
     wx.request({
-      url: url,
+      url: this.CONFIG.domain+url,
       data: data,
       method: method || 'GET',
       header: {
-        'content-type': 'application/json' // 默认值
+        'myautoid': this.userInfo.myautoid,'myssidkey': this.userInfo.myssidkey
       },
-      success(res) {
-        console.log(res.data)
+      success:res=> {
+        if(res.code==401){
+          this.toast("加载失败，请稍后重试！");
+          this.loginRun();
+          return ;
+        }
+        if (success){
+          success(res.data);
+        }
+      },
+      fail:()=>{
+        this.toast("加载失败，请稍后重试！")
       }
     })
   },
   loginCall:null,
-  globalData: {
-    userInfo: null
-  },
   toast:function(title, icon, duration){
     icon = icon ? icon:"none";
     duration = duration ? duration:1000;
-    wx.showToast({
-      title: title,
-      icon: icon,
-      duration: duration
-    })
+    wx.showToast({title: title,icon: icon,duration: duration})
   }
 })
