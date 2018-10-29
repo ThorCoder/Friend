@@ -1,33 +1,11 @@
+var common = require('static/js/common.js');
 App({
   userInfo: { myautoid: '', myssidkey:''},
   CONFIG:{
     'domain':"https://vlehe.com/"
   },
   onLaunch: function () {
-    this.userInfo.myautoid = wx.getStorageSync('myautoid')
-    this.userInfo.myssidkey = wx.getStorageSync('myssidkey')
-    if(!this.userInfo.myssidkey || !this.userInfo.myautoid){
-      this.login(); return;
-    }
-    wx.checkSession({
-      fail :()=> {
-        this.login();
-      }
-    });
-  },
-  login:function(){
-    var that = this;
-    wx.showLoading({title: '加载中...',mask: true});
-    wx.login({
-      success: res => {
-        this.request('haha', { 'code': res.code},function(data){
-          that.userInfo.myssidkey = data.myssidkey;
-          that.userInfo.myautoid = data.myautoid;
-          wx.setStorageSync("myssidkey", data.myssidkey)
-          wx.setStorageSync("myautoid", data.myautoid)
-        });
-      }
-    })
+    common.checkLogin.call(this);
   },
   request: function (url, data, success, method, header){
     wx.request({
