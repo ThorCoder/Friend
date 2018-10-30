@@ -12,6 +12,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#1296db",
+    "backgroundColor":"#1296db",
     "navigationBarTitleText": "朋友库",
     "navigationBarTextStyle": "white"
   },

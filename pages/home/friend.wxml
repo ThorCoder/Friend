@@ -1,6 +1,6 @@
 <view class="box">
   <view class="minfo">
-    <navigator class="avatar" url="/pages/detail/detail"><open-data type="userAvatarUrl"></open-data></navigator>
+    <navigator class="avatar" url="/pages/detail/detail?id={{userInfo.myselfid}}"><open-data type="userAvatarUrl"></open-data></navigator>
     <navigator url="/pages/search/search" class="text"><icon type="search" size="16"/><text>搜索</text></navigator>
     <navigator class="add" url="/pages/friend/add"><image src="/static/img/add.png"></image></navigator>
   </view>

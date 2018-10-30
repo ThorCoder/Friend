@@ -1,13 +1,14 @@
 var common = require('static/js/common.js');
 App({
-  userInfo: { myautoid: '', myssidkey:''},
+  userInfo: { myautoid: '', myssidkey: '', myselfid:'',islogin:false},
   CONFIG:{
-    'domain':"https://vlehe.com/"
+    'domain':"https://cc.9iwww.com/f/"
   },
   onLaunch: function () {
     common.checkLogin.call(this);
   },
   request: function (url, data, success, method, header){
+    console.log(data)
     wx.request({
       url: this.CONFIG.domain+url,
       data: data,
@@ -15,18 +16,17 @@ App({
       header: {
         'myautoid': this.userInfo.myautoid,'myssidkey': this.userInfo.myssidkey
       },
-      success:res=> {
-        if(res.code==401){
-          this.toast("加载失败，请稍后重试！");
-          this.loginRun();
-          return ;
+      complete:res=> {
+        if (res.statusCode >= 200 && res.statusCode <300){
+          if (success) {
+            success(res.data);
+          }
+        } else if (res.statusCode == 401) {
+          this.toast("请先登录！");
+          common.login.call(this);
+        }else{
+          this.toast("加载失败，请稍后重试！")
         }
-        if (success){
-          success(res.data);
-        }
-      },
-      fail:()=>{
-        this.toast("加载失败，请稍后重试！")
       }
     })
   },

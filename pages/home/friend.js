@@ -1,29 +1,31 @@
 var App = getApp();
 Page({
   data: {
-    "friendlist":[
-      { "id": "1", "name": "网小类", "subname": "小雷", "sex": "1","time":"下周一","event":"9.24日生日" },
-      { "id": "2", "name": "网小类", "subname": "H", "sex": "2", "time": "后天", "event": "9.24日生日"},
-      { "id": "3", "name": "网小类", "subname": "小雷", "sex": "0", "time": "明天", "event": "9.24日生日"}
-    ]
+    "friendlist":[],userInfo:App.userInfo
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+  onLoad:function(options){
+    if (!this.data.userInfo.myautoid || !this.data.userInfo.myssidkey){
+      App.loginCall = this.init;
+    }
+  }, onShow: function () {
+    if (this.data.userInfo.myautoid && this.data.userInfo.myssidkey) {
+      this.init();
+    }
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+  init:function(showToast){
+    wx.showNavigationBarLoading();
+    this.setData({ "userInfo": App.userInfo});
+    var that = this;
+    App.request('friendlist','',function(data){
+      that.setData({"friendlist":data});
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      if (showToast)App.toast("数据已刷新");
+    });
+  },
   onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
-    App.toast("数据已刷新");
+    this.init(true);
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
     App.toast("这是我的底线");
   }
