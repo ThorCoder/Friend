@@ -4,11 +4,11 @@ Page({
     "friendlist":[],userInfo:App.userInfo
   },
   onLoad:function(options){
-    if (!this.data.userInfo.myautoid || !this.data.userInfo.myssidkey){
+    if (!this.islogin){
       App.loginCall = this.init;
     }
   }, onShow: function () {
-    if (this.data.userInfo.myautoid && this.data.userInfo.myssidkey) {
+    if (this.islogin) {
       this.init();
     }
   },
@@ -16,12 +16,12 @@ Page({
     wx.showNavigationBarLoading();
     this.setData({ "userInfo": App.userInfo});
     var that = this;
-    App.request('friendlist','',function(data){
+    App.request('friend/list','',function(data){
       that.setData({"friendlist":data});
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
       if (showToast)App.toast("数据已刷新");
-    });
+    },'GET');
   },
   onPullDownRefresh: function () {
     this.init(true);

@@ -1,9 +1,11 @@
 function login() {
   var that = this;
   wx.showLoading({ title: '登录中...', mask: true });
+  console.log()
   wx.login({
     success: res => {
-      this.request('login.txt', { 'code': res.code }, function (data) {
+      this.request('login', { code: res.code }, function (data) {
+        console.log(data);
         if (!data.myssidkey || !data.myautoid || !data.myselfid){
           that.toast("登陆失败！");
           return ;
@@ -27,11 +29,14 @@ function checkLogin(){
   this.userInfo.myautoid = wx.getStorageSync('myautoid')
   this.userInfo.myssidkey = wx.getStorageSync('myssidkey')
   this.userInfo.myselfid = wx.getStorageSync('myselfid')
-  if (!this.userInfo.islogin) {
+  if (!this.userInfo.myautoid || !this.userInfo.myssidkey || !this.userInfo.myselfid) {
     login.call(this); return;
+  }else{
+    this.userInfo.islogin=true;
   }
   wx.checkSession({
     fail: () => {
+      this.userInfo.islogin = false;
       login.call(this);
     }
   });

@@ -1,29 +1,31 @@
+var App = getApp();
 Page({
-  data: {
-      "birthday":"",
-      "region":""
-  },
+  data: {"birthday":"","region":""},
   bindTimeChange: function (e) {
     this.setData({
       "birthday": e.detail.value
     })
   },bindRegionChange: function (e) {
-    console.log(e)
     this.setData({
       "region": e.detail.value
     })
   },
   bindsubmit:function(e){
-    wx.showModal({
-      content: '添加成功！',
-      showCancel:false,
-      success(res) {
-        //confirm cancel
+    e.detail.value["formId"] = e.detail.formId;
+    wx.showLoading({ title: '正在提交...', mask: true });
+    App.request('friend/add', e.detail.value, function (data) {
+      if(data.code=="success"){
+        App.toast("添加成功！","success");
         wx.redirectTo({
-          url: '/pages/detail/detail'
+          url: '/pages/detail/detail?id=' + data.friendid
+        })
+      }else{
+        wx.hideLoading();
+        wx.showModal({
+          content: 'fail' + data.code,
+          showCancel: false
         })
       }
-    })
-    
+    });
   }
 })

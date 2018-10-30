@@ -1,18 +1,15 @@
 <view class="box">
-  <form bindsubmit="bindsubmit">
+  <form bindsubmit="bindsubmit" report-submit>
   <view class="item">
-    <input type="text" class="text" confirm-type="search" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" />
+    <input type="text" class="text" confirm-type="search" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" name="name"/>
   </view>
   <view class="item">
-    <input type="text" class="text" confirm-type="search" placeholder="Ta是我的" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" />
+    <input type="text" class="text" confirm-type="search" placeholder="Ta是我的" placeholder-style='text-align:left;' maxlength="2"  name="relation"/>
   </view>
   <view class='item'>
-    <radio-group class="radio-group">
+    <radio-group class="radio-group" name="sex">
     <label class="radio">
-      <radio value="0" checked="true"/>不填
-    </label>
-    <label class="radio">
-      <radio value="1"/>男
+      <radio value="1" checked/>男
     </label>
     <label class="radio">
       <radio value="2"/>女
@@ -20,14 +17,14 @@
   </radio-group>
   </view>
   <view class='item'>
-     <picker mode="date" value="{{birthday}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange">
+     <picker mode="date" name="date" value="{{birthday}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange">
     <view class="picker">
       生日: {{birthday}}
     </view>
   </picker>
   </view>
   <view class='item'>
-     <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+     <picker mode="region" name="addr" value="{{region}}" bindchange="bindRegionChange">
     <view class="picker">
       地区: {{region}}
     </view>

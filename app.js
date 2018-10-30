@@ -2,21 +2,22 @@ var common = require('static/js/common.js');
 App({
   userInfo: { myautoid: '', myssidkey: '', myselfid:'',islogin:false},
   CONFIG:{
-    'domain':"https://cc.9iwww.com/f/"
+    'domain':"https://vlehe.com/"
   },
   onLaunch: function () {
     common.checkLogin.call(this);
   },
   request: function (url, data, success, method, header){
-    console.log(data)
     wx.request({
       url: this.CONFIG.domain+url,
       data: data,
-      method: method || 'GET',
+      method: method || 'POST',
       header: {
-        'myautoid': this.userInfo.myautoid,'myssidkey': this.userInfo.myssidkey
+        'myautoid': this.userInfo.myautoid,'myssidkey': this.userInfo.myssidkey,
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       complete:res=> {
+        console.log(res)
         if (res.statusCode >= 200 && res.statusCode <300){
           if (success) {
             success(res.data);
