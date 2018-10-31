@@ -1,0 +1,32 @@
+<view class="box">
+  <form bindsubmit="bindsubmit" report-submit>
+  <view class="item">
+  <input type='text' value="{{data.id}}" name="id" hidden/>
+    <input type="text" class="text" confirm-type="next" placeholder="类别" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="2" value="{{data.type}}" name="type"/>
+  </view>
+  <view class='item'>
+     <picker mode="date" value="{{data.date}}" name="newDate" start="1940-1-" end="{{now}}" bindchange="bindTimeChange">
+    <view class="picker">时间: {{data.date}}</view>
+  </picker>
+  </view>
+  <view class="item">
+    <input type="text" class="text" confirm-type="next" placeholder="备注" placeholder-style='text-align:left;' maxlength="10" name="remarks" value='{{data.remarks}}' />
+  </view>
+  <view class="item">
+    提醒：<switch checked="{{isremind}}" bindchange="switchChange" name="isremind"/>
+  </view>
+  <view class="item" hidden='{{!isremind}}'>
+    <picker bindchange="bindPickerChange" name="remindtimes" value="{{data.zqindex}}"  range="{{zhouqi}}">
+      <view class="picker">
+        周期：{{zhouqi[zhouqiindex]}}
+      </view>
+    </picker>
+  </view>
+  <view class="item" hidden='{{!isremind}}'>
+    下次提醒：{{nexttixing}}
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交</button>
+  </view>
+  </form>
+</view>

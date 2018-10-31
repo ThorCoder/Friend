@@ -14,7 +14,7 @@
   text-align: center;
   border-radius: 100%;
 }
-.minfo .subname.sex0{
+.minfo .subname.sex{
   background: #515151;
 }
 .minfo .subname.sex1{

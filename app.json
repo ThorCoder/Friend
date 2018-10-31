@@ -6,8 +6,8 @@
     "pages/search/search",
     "pages/detail/detail",
     "pages/friend/edit",
-    "pages/thing/add",
-    "pages/thing/edit"
+    "pages/event/add",
+    "pages/event/edit"
   ],
   "window": {
     "backgroundTextStyle": "dark",

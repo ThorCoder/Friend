@@ -1,71 +1,60 @@
-// pages/detail/detail.js
+var App = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    "minfo": { "name": "网小类", "subname": "小雷", "sex": "1","birthday":"1993.09.24"},
-    "thinglist":[
-      {"type":"结婚","time":"1993.09.24","remind":true},
-      { "type": "生子", "time": "1993.09.24", "remind": true },
-      { "type": "买房", "time": "1993.09.24", "remind": false,"event":"在平谷买房" },
-    ]
+    id:0,
+    "data": {},
+    "eventlist":[]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    wx.showLoading({ title: '加载中...', mask: true });
+    var id = options["id"];
+    if (!id) {
+      App.toast("参数错误：ID！","",function(){
+        wx.navigateBack({ delta: 1 });
+      });
+      return;
+    }
+    this.setData({ id: id });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    this.init();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  init: function () {
+    wx.showNavigationBarLoading();
+    var that = this;
+    App.request('friend/detail', { id:this.data.id }, function (data) {
+      wx.hideNavigationBarLoading();
+      wx.hideLoading();
+      if (data.code == "success") {
+        for (var i in data.info) {
+          if (!data.info[i]) {
+            data.info[i] = "";
+          }
+        }
+        for (var i in data.info.addr) {
+          data.info.addr[i] = data.info.addr[i].replace(/自治区|省|市|县|区/g, '');
+        }
+        that.setData({ "data": data.info });
+      } else {
+        wx.showModal({
+          content: 'fail:' + data.code, showCancel: false, success(res) {
+            wx.navigateBack({ delta: 1 });
+          }
+        })
+      }
+    }, "GET");
+    App.request('event/list', { id: this.data.id }, function (data) {
+      wx.hideNavigationBarLoading();
+      wx.hideLoading();
+      if (data.code == "success") {
+        that.setData({ "eventlist": data.info });
+      } else {
+        wx.showModal({
+          content: 'fail:' + data.code, showCancel: false, success(res) {
+            wx.navigateBack({ delta: 1 });
+          }
+        })
+      }
+    }, "GET");
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

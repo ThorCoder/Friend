@@ -15,10 +15,11 @@ Page({
     wx.showLoading({ title: '正在提交...', mask: true });
     App.request('friend/add', e.detail.value, function (data) {
       if(data.code=="success"){
-        App.toast("添加成功！","success");
-        wx.redirectTo({
-          url: '/pages/detail/detail?id=' + data.friendid
-        })
+        App.toast("添加成功！","success",function(){
+          wx.redirectTo({
+            url: '/pages/detail/detail?id=' + data.friendId
+          })
+        });
       }else{
         wx.hideLoading();
         wx.showModal({

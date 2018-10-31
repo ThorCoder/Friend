@@ -1,28 +1,29 @@
 <view class="box">
-  <navigator class="minfo" url="/pages/friend/edit">
-    <text class="subname sex{{minfo.sex}}">{{minfo.subname}}</text>
-    <view><text>老板</text><text class="name">{{minfo.name}}</text></view>
+  <navigator class="minfo" url="/pages/friend/edit?id={{data.id}}">
+    <text class="subname sex{{data.sex}}">{{data.subName}}</text>
+    <view><text>{{data.relation}}</text><text class="name">{{data.name}}</text></view>
     <view class="subintro">
-      <block wx:if="{{minfo.birthday!=''}}">
-      <image src='/static/img/birthday_1.png' /><text>1993.09.24</text>
+      <block wx:if="{{data.date}}">
+      <image src='/static/img/birthday_1.png' /><text>{{data.date}}</text>
       </block>
       <block wx:else>
       <image src='/static/img/birthday.png' /><text>未填写</text>
       </block>
-      <text>河北 邯郸</text>
+      <text wx:if="{{data.addr[0]!=data.addr[1]}}">{{data.addr[0]}}</text>
+      <text>{{data.addr[1]}}</text>
+      <text wx:if="{{data.addr[0]==data.addr[1]}}">{{data.addr[2]}}</text>
     </view>
   </navigator>
   <view class="total">
-    <text>{{thinglist.length}}件事儿</text>
-    <navigator url="/pages/thing/add?uid=1">添加事项</navigator>
+    <text>{{eventlist.length}}件事儿</text>
+    <navigator url="/pages/event/add?userid={{data.id}}">添加事项</navigator>
   </view>
-  <view class="thinglist">
-    <navigator url="/pages/thing/edit?id={{item.id}}" wx:for="{{thinglist}}" wx:key="id" class="item" hover-class="hover">
+  <view class="eventlist">
+    <navigator url="/pages/event/edit?id={{item.id}}" wx:for="{{eventlist}}" wx:key="id" class="item" hover-class="hover">
       <text class="type">{{item.type}}</text>
-      <view class="info"><text class="name">{{item.time}}</text><text class="event">{{item.event}}</text></view>
-      <image wx:if="{{item.remind}}" src="/static/img/remind_1.png"/>
+      <view class="info"><text class="name">{{item.newDate}}</text><text class="event">{{item.remarks}}</text></view>
+      <image wx:if="{{item.remind==2}}" src="/static/img/remind_1.png"/>
       <image wx:else src="/static/img/remind.png"/>
     </navigator>
   </view>
-  
 </view>

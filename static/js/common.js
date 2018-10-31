@@ -26,8 +26,6 @@ function login() {
   })
 }
 function checkLogin(){
-  //
-  return true;
   this.userInfo.myautoid = wx.getStorageSync('myautoid')
   this.userInfo.myssidkey = wx.getStorageSync('myssidkey')
   this.userInfo.myselfid = wx.getStorageSync('myselfid')
