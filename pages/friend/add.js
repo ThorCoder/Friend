@@ -1,13 +1,13 @@
 var App = getApp();
 Page({
-  data: {"birthday":"","region":""},
+  data: { "birthday": "","addr":[]},
   bindTimeChange: function (e) {
     this.setData({
       "birthday": e.detail.value
     })
   },bindRegionChange: function (e) {
     this.setData({
-      "region": e.detail.value
+      "addr": e.detail.value
     })
   },
   bindsubmit:function(e){
@@ -22,7 +22,7 @@ Page({
       }else{
         wx.hideLoading();
         wx.showModal({
-          content: 'fail' + data.code,
+          content: 'fail:' + data.code,
           showCancel: false
         })
       }

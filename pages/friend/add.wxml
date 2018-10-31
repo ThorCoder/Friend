@@ -1,37 +1,29 @@
 <view class="box">
   <form bindsubmit="bindsubmit" report-submit>
   <view class="item">
-    <input type="text" class="text" confirm-type="search" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" name="name"/>
+    <input type="text" class="text" confirm-type="next" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" name="name"/>
   </view>
   <view class="item">
-    <input type="text" class="text" confirm-type="search" placeholder="Ta是我的" placeholder-style='text-align:left;' maxlength="2"  name="relation"/>
+    <input type="text" class="text" confirm-type="next" placeholder="Ta是我的" placeholder-style='text-align:left;' maxlength="2"  name="relation"/>
   </view>
   <view class='item'>
     <radio-group class="radio-group" name="sex">
-    <label class="radio">
-      <radio value="1" checked/>男
-    </label>
-    <label class="radio">
-      <radio value="2"/>女
-    </label>
+    <label class="radio"><radio value="1" checked/>男</label>
+    <label class="radio"><radio value="2"/>女</label>
   </radio-group>
   </view>
   <view class='item'>
      <picker mode="date" name="date" value="{{birthday}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange">
-    <view class="picker">
-      生日: {{birthday}}
-    </view>
+    <view class="picker">生日: {{birthday}}</view>
   </picker>
   </view>
   <view class='item'>
-     <picker mode="region" name="addr" value="{{region}}" bindchange="bindRegionChange">
-    <view class="picker">
-      地区: {{region}}
-    </view>
+     <picker mode="region" name="addr" value="{{addr}}" bindchange="bindRegionChange">
+    <view class="picker">地区: {{addr}}</view>
   </picker>
   </view>
   <view class="btn-area">
-    <button formType="submit">提交</button>
+    <button formType="submit" type="primary">提交</button>
   </view>
   </form>
 </view>
