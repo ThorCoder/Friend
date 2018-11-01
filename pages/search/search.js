@@ -1,9 +1,5 @@
-// pages/search/search.js
+var App = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     "friendlist": [],
     "ishidden":true,
@@ -13,14 +9,21 @@ Page({
   search: function (value, cursor, keyCode){
     var friendlist = [];
     this.setData({
-      "ishidden": value.detail.cursor==0
+      "ishidden": value.detail.value.length == 0
     })
-    if (value.detail.value=="小雷"){
-      friendlist.push({ "id": "1", "name": "网小类", "subname": "小雷", "sex": "1" });
-      this.setData({
-        "friendlist": friendlist
-      })
+    if (value.detail.value.length<1){
+      return ;
     }
+    wx.showNavigationBarLoading();
+    var that= this;
+    App.request('friend/search', {'kw':value.detail.value}, function (data) {
+      wx.hideNavigationBarLoading();
+      if (data.code == "success") {
+        that.setData({ "friendlist": data.info });
+      }else{
+        wx.showModal({content: 'fail:' + data.code, showCancel: false })
+      }
+    }, 'GET');
   },
   reset:function(){
     this.setData({

@@ -8,10 +8,7 @@
     </view>
   </view>
   <view class='list'>
-     <navigator class="item default icon" url="/pages/detail/detail"><text class="title">手机</text><text>18*******03</text></navigator>
-      
-      <navigator class="item default icon" url="/pages/detail/detail"><text class="title">手机</text><text>绑定</text><image src='/static/img/right.png'></image></navigator>
-
+      <navigator class="item default icon" url="/pages/bindmail"><text class="title">邮箱</text><text wx:if="{{data.mail}}">已绑定</text><text wx:if="{{!data.mail}}">绑定可收到提醒</text><image src='/static/img/right.png' /></navigator>
      <button class="item" open-type='feedback'>意见反馈</button>
   </view>
 </view>

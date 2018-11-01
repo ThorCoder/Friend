@@ -1,10 +1,6 @@
-// pages/my/my.js
+var App = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    data:{"mail":""}
   }
 })

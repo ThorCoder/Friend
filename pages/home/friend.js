@@ -4,11 +4,11 @@ Page({
     "friendlist":[],userInfo:App.userInfo
   },
   onLoad:function(options){
-    if (!this.islogin){
+    if (!this.data.userInfo["islogin"]){
       App.loginCall = this.init;
     }
   }, onShow: function () {
-    if (this.islogin) {
+    if (this.data.userInfo["islogin"]) {
       this.init();
     }
   },
@@ -17,7 +17,7 @@ Page({
     this.setData({ "userInfo": App.userInfo});
     var that = this;
     App.request('friend/list','',function(data){
-      that.setData({"friendlist":data});
+      that.setData({"friendlist":data.info});
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
       if (showToast)App.toast("数据已刷新");

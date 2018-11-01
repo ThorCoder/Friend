@@ -7,8 +7,8 @@
   <view class="friendlist">
     <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{friendlist}}" wx:key="id" class="frienditem" hover-class="hover">
       <text class="subname sex{{item.sex}}">{{item.subName}}</text>
-      <view class="info"><text class="name">{{item.name}}</text><text class="event">{{item.event}}</text></view>
-      <text class="time">{{item.time}}</text>
+      <view class="info"><text class="name">{{item.name}}</text><text class="event">{{item.event.newDate}}{{item.event.type}}</text></view>
+      <text class="time">{{item.event.nextDate2}}</text>
     </navigator>
   </view>
   <view class="friendtotal">{{friendlist.length}}位朋友</view>

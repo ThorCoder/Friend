@@ -2,6 +2,7 @@ var App = getApp();
 Page({
   data: {
     id:0,
+    userId:0,
     data:{},
     "zhouqi": ["每年", "每月", "每周", "每日"],
     "zqval": [1, 2, 3, 4],
@@ -15,27 +16,31 @@ Page({
       需将nexttixing 赋值
      */
     var id = options["id"];
-    if (!id) {
+    var userId = options["userId"];
+    if (!id || !userId) {
       App.toast("参数错误：ID！", "error", function () {
         wx.navigateBack({ delta: 1 });
       });
       return;
     }
-    this.setData({ id: id });
+    this.setData({ id: id, userId: userId });
     this.init();
   },
   init: function () {
     wx.showNavigationBarLoading();
     var that = this;
-    App.request('event/detail', { id: this.data.id }, function (data) {
+    App.request('event/detail', { id: this.data.id,userId:this.data.userId }, function (data) {
       wx.hideNavigationBarLoading();
       if (data.code == "success") {
         for (var i in data.info) {
           if (!data.info[i]) {data.info[i] = "";}
         }
         data.info.remind = (data.info.remind ==2);
-        that.data.zqindex = that.data.zqval.indexOf(parseInt(data.info.cycle));
-        that.setData({ "data": data.info });
+        that.setData({
+           "data": data.info,
+            nexttixing: data.info["nextDate2"],
+            zqindex: that.data.zqval.indexOf(parseInt(data.info.cycle))
+        });
       } else {
         wx.showModal({
           content: 'fail:' + data.code, showCancel: false, success: function (res) {
@@ -65,7 +70,9 @@ Page({
     }
     this.setData({ "nexttixing": "计算中..." })
     var that = this
-    App.request('event/tixing', { "cycle": this.data.zqval[this.data.zqindex],"date": this.data.data.newDate}, function (data) {
+    console.log(this.data.zqval[parseInt(this.data.zqindex)])
+    console.log(this.data.zqval[this.data.zqindex])
+    App.request('event/tixing', { "cycle": this.data.zqval[parseInt(this.data.zqindex)],"date": this.data.data.newDate}, function (data) {
       if (data.code == "success") {
         that.setData({ "nexttixing": data.info })
       } else {
@@ -90,7 +97,7 @@ Page({
     wx.showLoading({ title: '正在提交...', mask: true });
     App.request('event/edit', e.detail.value, function (data) {
       if (data.code == "success") {
-        App.toast("添加成功！", "success", function () {
+        App.toast("修改成功！", "success", function () {
           wx.navigateBack({ delta: 1 })
         });
       } else {
@@ -108,10 +115,10 @@ Page({
       success: res => {
         if (res.confirm) {
           wx.showLoading({ title: '正在删除...', mask: true });
-          App.request('event/delete', { "id": this.data.data["id"],userId:this.data.data["userId"] }, function (data) {
+          App.request('event/delete', { "id": this.data.id,userId:this.data.userId }, function (data) {
             if (data.code == "success") {
               App.toast("删除成功！", "success", function () {
-                wx.navigateBack({ delta: 2 });
+                wx.navigateBack({ delta: 1 });
               });
             } else {
               wx.hideLoading();

@@ -19,7 +19,7 @@
     <navigator url="/pages/event/add?userid={{data.id}}">添加事项</navigator>
   </view>
   <view class="eventlist">
-    <navigator url="/pages/event/edit?id={{item.id}}" wx:for="{{eventlist}}" wx:key="id" class="item" hover-class="hover">
+    <navigator url="/pages/event/edit?id={{item.id}}&userId={{item.userId}}" wx:for="{{eventlist}}" wx:key="id" class="item" hover-class="hover">
       <text class="type">{{item.type}}</text>
       <view class="info"><text class="name">{{item.newDate}}</text><text class="event">{{item.remarks}}</text></view>
       <image wx:if="{{item.remind==2}}" src="/static/img/remind_1.png"/>

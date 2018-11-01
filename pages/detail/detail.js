@@ -19,12 +19,14 @@ Page({
   onShow: function () {
     this.init();
   },
-  init: function () {
+  onPullDownRefresh: function () {
+    this.init(true);
+  },
+  init: function (showToast) {
+    var isshow=2;
     wx.showNavigationBarLoading();
     var that = this;
     App.request('friend/detail', { id:this.data.id }, function (data) {
-      wx.hideNavigationBarLoading();
-      wx.hideLoading();
       if (data.code == "success") {
         for (var i in data.info) {
           if (!data.info[i]) {
@@ -35,6 +37,12 @@ Page({
           data.info.addr[i] = data.info.addr[i].replace(/自治区|省|市|县|区/g, '');
         }
         that.setData({ "data": data.info });
+        
+        if (--isshow < 1) {
+         wx.hideNavigationBarLoading();
+         wx.hideLoading();
+         if (showToast) App.toast("数据已刷新");
+        }
       } else {
         wx.showModal({
           content: 'fail:' + data.code, showCancel: false, success(res) {
@@ -44,10 +52,13 @@ Page({
       }
     }, "GET");
     App.request('event/list', { id: this.data.id }, function (data) {
-      wx.hideNavigationBarLoading();
-      wx.hideLoading();
       if (data.code == "success") {
         that.setData({ "eventlist": data.info });
+        if (--isshow < 1) {
+          wx.hideNavigationBarLoading();
+          wx.hideLoading();
+          if (showToast) App.toast("数据已刷新");
+        }
       } else {
         wx.showModal({
           content: 'fail:' + data.code, showCancel: false, success(res) {

@@ -7,7 +7,7 @@ Page({
     "zhouqi":["每年","每月","每周","每日"],
     "zqval":[1,2,3,4],
     "zqindex":0,
-    "nexttixing":"计算中...",
+    "nexttixing":"未选择日期",
     "now":new Date()
   },
   onLoad: function (options){
@@ -37,6 +37,7 @@ Page({
       this.setData({ "nexttixing": "未选择日期" })
       return;
     }
+    var that = this;
     this.setData({ "nexttixing": "计算中..." })
     App.request('event/tixing', { "cycle": this.data.zqval[this.data.zqindex], "date": this.data.newDate }, function (data) {
       if (data.code == "success") {
