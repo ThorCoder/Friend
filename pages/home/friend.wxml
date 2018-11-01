@@ -6,7 +6,7 @@
   </view>
   <view class="friendlist">
     <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{friendlist}}" wx:key="id" class="frienditem" hover-class="hover">
-      <text class="subname sex{{item.sex}}">{{item.subname}}</text>
+      <text class="subname sex{{item.sex}}">{{item.subName}}</text>
       <view class="info"><text class="name">{{item.name}}</text><text class="event">{{item.event}}</text></view>
       <text class="time">{{item.time}}</text>
     </navigator>

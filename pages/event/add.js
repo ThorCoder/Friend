@@ -2,7 +2,7 @@ var App = getApp();
 Page({
   data: {
     "userid":0,
-    "date":"",
+    "newDate":"",
     "remind":false,
     "zhouqi":["每年","每月","每周","每日"],
     "zqval":[1,2,3,4],
@@ -22,12 +22,12 @@ Page({
   },
   bindTimeChange: function (e) {
     this.setData({
-      "date": e.detail.value
+      "newDate": e.detail.value
     });
     this.setNextTixing();
   },
   setNextTixing:function(){
-    var date = this.data.date;
+    var date = this.data.newDate;
     var zqindex = this.data.zqindex;
     if (zqindex == 3) {
       this.setData({ "nexttixing": "明天" })
@@ -38,7 +38,13 @@ Page({
       return;
     }
     this.setData({ "nexttixing": "计算中..." })
-    
+    App.request('event/tixing', { "cycle": this.data.zqval[this.data.zqindex], "date": this.data.newDate }, function (data) {
+      if (data.code == "success") {
+        that.setData({ "nexttixing": data.info })
+      } else {
+        that.setData({ "nexttixing": "计算失败" })
+      }
+    }, 'GET');
   },
   bindPickerChange:function(e){
     this.setData({"zqindex": e.detail.value})

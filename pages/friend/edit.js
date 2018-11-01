@@ -54,8 +54,6 @@ Page({
       content: '确认要删除该信息吗？',
       success:res=>{
         if (res.confirm) {
-          console.log(this.data.data)
-          console.log(this.data.data["id"])
           wx.showLoading({ title: '正在删除...', mask: true });
           App.request('friend/delete', {"id":this.data.data["id"]}, function (data) {
             if (data.code == "success") {

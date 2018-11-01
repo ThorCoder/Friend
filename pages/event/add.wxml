@@ -5,8 +5,8 @@
     <input type="text" class="text" confirm-type="next" placeholder="类别" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="2" name="type"/>
   </view>
   <view class='item'>
-     <picker mode="date" value="{{date}}" name="newDate" start="1940-1-1" end="{{now}}" bindchange="bindTimeChange">
-    <view class="picker">时间: {{date}}</view>
+     <picker mode="date" value="{{newDate}}" name="newDate" start="1940-1-1" end="{{now}}" bindchange="bindTimeChange">
+    <view class="picker">时间: {{newDate}}</view>
   </picker>
   </view>
   <view class="item">
