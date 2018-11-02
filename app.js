@@ -4,7 +4,7 @@ App({
   CONFIG:{
     'domain':"https://vlehe.com/"
   },
-  onLaunch: function () {
+  onLaunch: function (o) {
     common.checkLogin.call(this);
   },
   request: function (url, data, success, method, header){
@@ -31,7 +31,7 @@ App({
       }
     })
   },
-  loginCall:null,
+  loginCall:[],
   toast: function (title, icon, doFn, duration){
     icon = icon ? icon:"none";
     duration = duration ? duration:1000;

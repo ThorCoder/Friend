@@ -18,14 +18,17 @@ function login() {
         wx.setStorageSync("myautoid", data.myautoid)
         wx.setStorageSync("myselfid", data.myselfid)
         that.toast("登陆成功！");
-        if (that.loginCall){
-          that.loginCall();
+        for(var i in that.loginCall){
+          if (that.loginCall[i]) {
+            that.loginCall[i]();
+          }
         }
       });
     }
   })
 }
 function checkLogin(){
+  return true;
   this.userInfo.myautoid = wx.getStorageSync('myautoid')
   this.userInfo.myssidkey = wx.getStorageSync('myssidkey')
   this.userInfo.myselfid = wx.getStorageSync('myselfid')

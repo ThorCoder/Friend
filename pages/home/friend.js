@@ -5,7 +5,7 @@ Page({
   },
   onLoad:function(options){
     if (!this.data.userInfo["islogin"]){
-      App.loginCall = this.init;
+      App.loginCall.push(this.init);
     }
   }, onShow: function () {
     if (this.data.userInfo["islogin"]) {
