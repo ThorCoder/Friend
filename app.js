@@ -14,7 +14,8 @@ App({
       method: method || 'POST',
       header: {
         'myautoid': this.userInfo.myautoid,'myssidkey': this.userInfo.myssidkey,
-        "Content-Type": "application/x-www-form-urlencoded"
+        "mykeymd5": "ce80524c66c9c5a25d8be08b6eb04aa6",
+        'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       complete:res=> {
         console.log(res)
@@ -27,6 +28,7 @@ App({
           common.login.call(this);
         }else{
           this.toast("请求失败，请稍后重试！")
+          wx.hideNavigationBarLoading();
         }
       }
     })

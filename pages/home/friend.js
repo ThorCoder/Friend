@@ -17,10 +17,16 @@ Page({
     this.setData({ "userInfo": App.userInfo});
     var that = this;
     App.request('friend/list','',function(data){
-      that.setData({"friendlist":data.info});
+      if(data.code=="success"){
+        that.setData({ "friendlist": data.info });
+        if (showToast) App.toast("数据已刷新");
+      }else{
+        wx.showModal({content:data.code, showCancel: false})
+      }
+      
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
-      if (showToast)App.toast("数据已刷新");
+      
     },'GET');
   },
   onPullDownRefresh: function () {

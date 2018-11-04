@@ -8,7 +8,7 @@
     </view>
   </view>
   <view class='list'>
-      <navigator class="item default icon" url="/pages/mail/edit?mail={{data.mail}}"><text class="title">邮箱</text><text wx:if="{{data.mail}}">已绑定</text><text wx:if="{{!data.mail}}">绑定可收到提醒</text><image src='/static/img/right.png' /></navigator>
+      <navigator class="item default icon" url="/pages/mail/edit?mail={{data.mail}}"><text class="title">提醒邮箱</text><text wx:if="{{data.mail}}">已绑定</text><text wx:if="{{!data.mail}}">绑定</text><image src='/static/img/right.png' /></navigator>
      <button class="item" open-type='feedback'>意见反馈</button>
   </view>
 </view>

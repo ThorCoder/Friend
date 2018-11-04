@@ -1,6 +1,6 @@
 var App = getApp();
 Page({
-  data: { "birthday": "","addr":[]},
+  data: { "addr":[]},
   bindTimeChange: function (e) {
     this.setData({
       "birthday": e.detail.value
@@ -23,8 +23,7 @@ Page({
       }else{
         wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code,
-          showCancel: false
+          content: data.code,showCancel: false
         })
       }
     });

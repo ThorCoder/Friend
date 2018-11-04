@@ -67,7 +67,7 @@ Page({
       } else {
         wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code,showCancel: false
+          content: data.code,showCancel: false
         })
       }
     });

@@ -1,14 +1,9 @@
 <view class="box">
   <navigator class="minfo" url="/pages/friend/edit?id={{data.id}}">
     <text class="subname sex{{data.sex}}">{{data.subName}}</text>
-    <view><text>{{data.relation}}</text><text class="name">{{data.name}}</text></view>
+    <view><text class="name">{{data.name}}</text></view>
     <view class="subintro">
-      <block wx:if="{{data.date}}">
-      <image src='/static/img/birthday_1.png' /><text>{{data.date}}</text>
-      </block>
-      <block wx:else>
-      <image src='/static/img/birthday.png' /><text>未填写</text>
-      </block>
+      <text>{{data.relation}}</text>
       <text wx:if="{{data.addr[0]!=data.addr[1]}}">{{data.addr[0]}}</text>
       <text>{{data.addr[1]}}</text>
       <text wx:if="{{data.addr[0]==data.addr[1]}}">{{data.addr[2]}}</text>

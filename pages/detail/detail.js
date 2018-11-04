@@ -41,11 +41,16 @@ Page({
         if (--isshow < 1) {
          wx.hideNavigationBarLoading();
          wx.hideLoading();
-         if (showToast) App.toast("数据已刷新");
+         if (showToast) {
+           wx.stopPullDownRefresh();
+           App.toast("数据已刷新");
+        }
         }
       } else {
+        wx.hideNavigationBarLoading();
+        wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code, showCancel: false, success(res) {
+          content: data.code, showCancel: false, success(res) {
             wx.navigateBack({ delta: 1 });
           }
         })
@@ -57,11 +62,16 @@ Page({
         if (--isshow < 1) {
           wx.hideNavigationBarLoading();
           wx.hideLoading();
-          if (showToast) App.toast("数据已刷新");
+          if (showToast) {
+            wx.stopPullDownRefresh();
+            App.toast("数据已刷新");
+          }
         }
       } else {
+        wx.hideNavigationBarLoading();
+        wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code, showCancel: false, success(res) {
+          content:data.code, showCancel: false, success(res) {
             wx.navigateBack({ delta: 1 });
           }
         })

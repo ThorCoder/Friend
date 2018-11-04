@@ -1,11 +1,11 @@
 <view class="box">
   <form bindsubmit="bindsubmit" report-submit>
   <view class="item">
-    <input type="text" class="text" confirm-type="next" placeholder="邮箱" placeholder-style='text-align:left;' focus="true" auto-focus="true" value="{{data.mail}}" name="mail"/>
+    <input type="text" class="text" confirm-type="next" placeholder="邮箱" placeholder-style='text-align:left;' focus="true" auto-focus="true" value="{{data.mail}}"  bindinput='input' name="mail" id="mail" />
   </view>
   <view class="item yzm">
-    <input type="text" class="text" confirm-type="done" placeholder="验证码" placeholder-style='text-align:left;' maxlength="20" name="yzm" />
-    <button>发送验证码</button>
+    <input type="text" class="text" confirm-type="done" placeholder="验证码" placeholder-style='text-align:left;' maxlength="20" name="yzm" value="{{yzm}}"id="yzm" bindinput='input' />
+    <button bindtap='bindsend' disabled='{{disable}}'><text wx:if="{{!disable}}">发送</text><text wx:else>{{seconds}}s</text></button>
   </view>
   <view class="btn-area">
     <button formType="submit" type="primary">提交</button>

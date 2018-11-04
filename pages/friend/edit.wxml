@@ -14,11 +14,6 @@
   </radio-group>
   </view>
   <view class='item'>
-     <picker mode="date" value="{{data.date}}" start="1940-10-27" end="2018-10-27" bindchange="bindTimeChange" name="date">
-    <view class="picker">生日: {{data.date}}</view>
-  </picker>
-  </view>
-  <view class='item'>
      <picker mode="region" value="{{data.addr}}" bindchange="bindRegionChange" name="addr">
     <view class="picker">地区: {{data.addr}}</view>
   </picker>

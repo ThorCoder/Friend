@@ -2,7 +2,7 @@ var App = getApp();
 Page({
   data: {
     id:0,
-    data: { "date": "","addr":[]},
+    data: {"addr":[]},
     userInfo: App.userInfo
   },
   onLoad:function(options){
@@ -30,22 +30,15 @@ Page({
         that.setData({"data":data.info});
       } else {
         wx.showModal({
-          content: 'fail:' + data.code,showCancel: false,success:function(res){
+          content: data.code,showCancel: false,success:function(res){
             wx.navigateBack({ delta: 1 });
           }
         })
       }
     },"GET");
-  },
-  bindTimeChange: function (e) {
-    this.data.data['date'] = e.detail.value;
-    this.setData({
-      "data": this.data.data
-    })
   }, bindRegionChange: function (e) {
-    this.data.data['addr'] = e.detail.value;
     this.setData({
-      "data": this.data.data
+      "data.addr": e.detail.value
     })
   },
   binddel:function(e){
@@ -63,7 +56,7 @@ Page({
             } else {
               wx.hideLoading();
               wx.showModal({
-                content: 'fail:' + data.code,showCancel: false
+                content: data.code,showCancel: false
               })
             }
           });
@@ -82,7 +75,7 @@ Page({
       } else {
         wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code,
+          content: data.code,
           showCancel: false
         })
       }

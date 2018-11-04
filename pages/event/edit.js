@@ -11,10 +11,6 @@ Page({
     "now":new Date()
   },
   onLoad:function(options){
-    /*
-      需将 data.zqindex 赋值
-      需将nexttixing 赋值
-     */
     var id = options["id"];
     var userId = options["userId"];
     if (!id || !userId) {
@@ -43,7 +39,7 @@ Page({
         });
       } else {
         wx.showModal({
-          content: 'fail:' + data.code, showCancel: false, success: function (res) {
+          content:data.code, showCancel: false, success: function (res) {
             wx.navigateBack({ delta: 1 });
           }
         })
@@ -103,7 +99,7 @@ Page({
       } else {
         wx.hideLoading();
         wx.showModal({
-          content: 'fail:' + data.code, showCancel: false
+          content:data.code, showCancel: false
         })
       }
     });
@@ -123,7 +119,7 @@ Page({
             } else {
               wx.hideLoading();
               wx.showModal({
-                content: 'fail:' + data.code, showCancel: false
+                content: data.code, showCancel: false
               })
             }
           });
