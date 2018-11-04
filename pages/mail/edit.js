@@ -37,7 +37,7 @@ Page({
   bindsubmit: function (e) {
     e.detail.value["formId"] = e.detail.formId;
     wx.showLoading({ title: '正在提交...', mask: true });
-    App.request('mail/confirm', {"yzm":this.data.yzm}, function (data) {
+    App.request('mail/confirm', {"mail":this.data.mail,"yzm":this.data.yzm}, function (data) {
       if (data.code == "success") {
         App.toast("绑定成功！", "success", function () {
           wx.navigateBack({ delta: 1 })

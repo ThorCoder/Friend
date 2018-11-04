@@ -19,3 +19,8 @@
 .yzm input{
   flex-grow: 1;
 }
+.yzm button{
+  width:100prx;
+  height: 80rpx;
+  font-size:13pt;
+}
