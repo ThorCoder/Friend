@@ -13,7 +13,8 @@ Page({
       this.init();
     }
   },
-  init: function () {
+  init: function (showToast) {
+    var that = this;
     wx.showNavigationBarLoading();
     this.setData({ "userInfo": App.userInfo });
     App.request('mail/detail', '', function (data) {
