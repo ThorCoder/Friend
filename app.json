@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/detail/detail",
     "pages/home/friend",
     "pages/home/my",
+    "pages/detail/detail",
     "pages/friend/add",
     "pages/search/search",
     "pages/friend/edit",
