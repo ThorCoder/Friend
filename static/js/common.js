@@ -5,7 +5,6 @@ function login() {
   wx.login({
     success: res => {
       this.request('login', { code: res.code }, function (data) {
-        console.log(data);
         if (!data.myssidkey || !data.myautoid || !data.myselfid){
           that.toast("登陆失败！");
           return ;

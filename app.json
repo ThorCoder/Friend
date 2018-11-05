@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/detail/detail",
     "pages/home/friend",
     "pages/home/my",
     "pages/friend/add",
     "pages/search/search",
-    "pages/detail/detail",
     "pages/friend/edit",
     "pages/event/add",
     "pages/event/edit",

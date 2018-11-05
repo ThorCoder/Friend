@@ -3,7 +3,8 @@ Page({
   data: {
     id:0,
     "data": {},
-    "eventlist":[]
+    "eventlist":[],
+    userInfo: App.userInfo
   },
   onLoad: function (options) {
     wx.showLoading({ title: '加载中...', mask: true });
@@ -15,9 +16,14 @@ Page({
       return;
     }
     this.setData({ id: id });
+    if (!this.data.userInfo["islogin"]) {
+      App.loginCall.push(this.init);
+    }
   },
   onShow: function () {
-    this.init();
+    if (this.data.userInfo["islogin"]) {
+      this.init();
+    }
   },
   onPullDownRefresh: function () {
     this.init(true);

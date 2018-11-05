@@ -18,7 +18,6 @@ App({
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
       },
       complete:res=> {
-        console.log(res)
         if (res.statusCode >= 200 && res.statusCode <300){
           if (success) {
             success(res.data);
@@ -26,6 +25,11 @@ App({
         } else if (res.statusCode == 401) {
           this.toast("请先登录！");
           common.login.call(this);
+          if(url!='login'){
+            this.loginCall.push(() => {
+              this.request(url, data, success, method, header)
+            });
+          }
         }else{
           this.toast("请求失败，请稍后重试！")
           wx.hideNavigationBarLoading();
