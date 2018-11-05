@@ -1,7 +1,6 @@
 function login() {
   var that = this;
   wx.showLoading({ title: '登录中...', mask: true });
-  console.log()
   wx.login({
     success: res => {
       this.request('login', { code: res.code }, function (data) {
