@@ -18,8 +18,23 @@ Page({
     var that = this;
     App.request('friend/list','',function(data){
       if(data.code=="success"){
+         data.info.sort(function (x, y) {
+           if (!x["event"]){
+             return 1;
+           }
+           if (!y["event"]) {
+             return -1;
+           }
+           if (x["event"]["remind"] > y["event"]["remind"]) {
+            return -1;
+           } else if (x["event"]["remind"] < y["event"]["remind"]) {
+            return 1;
+           }
+           return x["event"]["nextDate"] - y["event"]["nextDate"];
+      })
         var now = new Date().getTime()/1000;
         for(var i in data.info){
+          if (!data.info[i]["event"]) continue;
           data.info[i].event.nextDate2=Math.ceil((data.info[i].event.nextDate - now)/86400)+"天";
         }
         that.setData({ "friendlist": data.info });

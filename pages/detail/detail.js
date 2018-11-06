@@ -26,7 +26,7 @@ Page({
     stype[e.target.id]="hover";
     if(e.target.id=="def"){
       this.data.eventlist.sort(function(x,y){
-        return x["date"] - y["date"];
+        return y["date"]-x["date"];
       })
     }else{
       this.data.eventlist.sort(function (x, y) {

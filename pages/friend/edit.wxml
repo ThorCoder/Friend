@@ -5,7 +5,7 @@
     <input type="text" class="text" confirm-type="next" placeholder="输入名字" placeholder-style='text-align:left;' focus="true" auto-focus="true" maxlength="10" value="{{data.name}}" name="name"/>
   </view>
   <view class="item">
-    <input type="text" class="text" confirm-type="next" placeholder="Ta是我的" placeholder-style='text-align:left;'maxlength="2" value="{{data.relation}}" name="relation"/>
+    <input type="text" class="text" confirm-type="next" placeholder="Ta是我的" placeholder-style='text-align:left;'maxlength="3" value="{{data.relation}}" name="relation"/>
   </view>
   <view class='item'>
     <radio-group class="radio-group" name="sex">
