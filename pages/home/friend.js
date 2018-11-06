@@ -18,6 +18,10 @@ Page({
     var that = this;
     App.request('friend/list','',function(data){
       if(data.code=="success"){
+        var now = new Date().getTime()/1000;
+        for(var i in data.info){
+          data.info[i].event.nextDate2=Math.ceil((data.info[i].event.nextDate - now)/86400)+"天";
+        }
         that.setData({ "friendlist": data.info });
         if (showToast) App.toast("数据已刷新");
       }else{

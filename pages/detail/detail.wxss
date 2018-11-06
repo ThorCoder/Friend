@@ -66,15 +66,15 @@
 }
 .item .info .name{
   font-size: 14pt;
+  display: block;
 }
 .item image{
   width:40rpx;
   height:40rpx;
 }
-.item .info .event{
+.item .info .event,.item .time{
   color:#cccccc;
   font-size: 11pt;
-  display: block;
 }
 .total{
   margin-top: 10rpx;
@@ -91,4 +91,16 @@
   font-size: 14pt;
   text-align: right;
   color:#1296db;
+}
+
+.btn{
+  margin:40rpx 40rpx 10rpx 40rpx;
+  text-align: center;
+  font-size: 13pt;
+}
+.btn text{
+  padding: 0 20rpx;
+}
+.btn .hover{
+  color:#d81e06;
 }

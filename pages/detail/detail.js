@@ -4,7 +4,8 @@ Page({
     id:0,
     "data": {},
     "eventlist":[],
-    userInfo: App.userInfo
+    userInfo: App.userInfo,
+    "stype":{"def":"hover","wait":""}
   },
   onLoad: function (options) {
     wx.showLoading({ title: '加载中...', mask: true });
@@ -19,6 +20,25 @@ Page({
     if (!this.data.userInfo["islogin"]) {
       App.loginCall.push(this.init);
     }
+  },
+  tapSort:function(e){
+    var stype = {"def":"","wait":""};
+    stype[e.target.id]="hover";
+    if(e.target.id=="def"){
+      this.data.eventlist.sort(function(x,y){
+        return x["date"] - y["date"];
+      })
+    }else{
+      this.data.eventlist.sort(function (x, y) {
+        if(x["remind"]>y["remind"]){
+          return -1;
+        }else if(x["remind"]<y["remind"]){
+          return 1;
+        }
+        return x["nextDate"] - y["nextDate"];
+      })
+    }
+    this.setData({ stype, "eventlist": this.data.eventlist});
   },
   onShow: function () {
     if (this.data.userInfo["islogin"]) {
@@ -64,7 +84,16 @@ Page({
     }, "GET");
     App.request('event/list', { id: this.data.id }, function (data) {
       if (data.code == "success") {
+        var now = new Date().getTime() / 1000;
+        for (var i in data.info) {
+        data.info[i].nextDate2 = Math.ceil((data.info[i].nextDate - now) / 86400);
+        }
         that.setData({ "eventlist": data.info });
+         if(that.data.stype.def!=""){
+           that.tapSort({"target":{"id":"def"}});
+         }else{
+           that.tapSort({ "target": { "id": "wait" } });
+         }
         if (--isshow < 1) {
           wx.hideNavigationBarLoading();
           wx.hideLoading();
